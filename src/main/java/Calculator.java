@@ -8,17 +8,24 @@ public class Calculator {
         int index = 1;
         while(strList.length > index){
             String operator = strList[index++];
-            if("+".equals(operator)){
-                result = plus(result, Integer.parseInt(strList[index++]));
-            } else if("-".equals(operator)){
-                result = minus(result, Integer.parseInt(strList[index++]));
-            } else if ("*".equals(operator)) {
-                result = multiple(result, Integer.parseInt(strList[index++]));
-            } else {
-                result = division(result, Integer.parseInt(strList[index++]));
-            }
+            int operand = Integer.parseInt(strList[index++]);
+            result = operatorCheck(result, operator, operand);
         }
+        return result;
+    }
 
+    public int operatorCheck(int result, String operator, int operand){
+        if("+".equals(operator)){
+            result = plus(result, operand);
+        } else if("-".equals(operator)){
+            result = minus(result, operand);
+        } else if("*".equals(operator)) {
+            result = multiple(result, operand);
+        } else if("/".equals(operator)){
+            result = division(result, operand);
+        } else {
+            throw new IllegalArgumentException();
+        }
         return result;
     }
 

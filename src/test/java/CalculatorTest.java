@@ -1,4 +1,3 @@
-import junit.framework.TestCase;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -6,12 +5,12 @@ import org.junit.Test;
 
 public class CalculatorTest{
     Calculator cal;
-    ArithmeticExpression arithmeticExpression;
+    FormulaProcessor formulaProcessor;
 
     @Before
     public void calInit() {
         cal  = new Calculator();
-        arithmeticExpression = new ArithmeticExpression();
+        formulaProcessor = new FormulaProcessor();
     }
 
     @Test
@@ -40,14 +39,21 @@ public class CalculatorTest{
     @Test
     public void resultCalculatorTest() {
         String str = "10 + 5 * 4 / 2";
-        String[] strList = arithmeticExpression.stringFunction(str);
+        String[] strList = formulaProcessor.splitFormula(str);
         assertEquals(30, cal.resultCalculator(strList));
     }
 
     @Test
     public void errorResultCalculatorTest() {
         String str = "10 + 5 * 4 / 2";
-        String[] strList = arithmeticExpression.stringFunction(str);
+        String[] strList = formulaProcessor.splitFormula(str);
         assertEquals(30, cal.resultCalculator(strList));
+    }
+
+    @Test
+    public void testOperatorCheck(){
+        assertThrows(IllegalArgumentException.class, () -> {
+           cal.operatorCheck(1, ".", 10);
+        });
     }
 }
