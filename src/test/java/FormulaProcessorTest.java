@@ -21,6 +21,7 @@ public class FormulaProcessorTest {
         assertThrows(IllegalArgumentException.class, () -> {
             formulaProcessor.formulaIsNull("   ");
         });
+        formulaProcessor.formulaIsNull("  ");
     }
 
     @Test
