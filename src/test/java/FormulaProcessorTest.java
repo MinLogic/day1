@@ -22,4 +22,9 @@ public class FormulaProcessorTest {
             formulaProcessor.formulaIsNull("   ");
         });
     }
+
+    @Test
+    public void testOperatorChecker(){
+        assertTrue(formulaProcessor.operatorChecker("+"));
+    }
 }

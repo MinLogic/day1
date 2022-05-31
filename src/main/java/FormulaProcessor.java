@@ -10,4 +10,12 @@ public class FormulaProcessor {
         String[] strList = string.split(" ");
         return strList;
     }
+
+    public boolean operatorChecker(String string) {
+        if("+-/*".contains(string)){
+            return true;
+        }
+
+        throw new IllegalArgumentException();
+    }
 }
